@@ -8,4 +8,26 @@ int main(){
 for(i=1; i<=10; i++){
 for(a=1; a<=10; a++){
 cout << i<< " x " << a << " = " << a*i << endl;}}}
----------------------------------------------------
+--------------Büyük-Küçük Harf---------------------
+#include <iostream>
+#include <cctype>
+using namespace std;
+int main() {
+    string alinandeger;
+    int harf = 0, sayi = 0, ozelkarakter = 0;
+
+    cout << "Lutfen cumlenizi yaziniz: ";
+    getline(cin, alinandeger);
+
+    for(int i = 0; i < alinandeger.length(); i++) {
+        if(isalpha(alinandeger[i])) {
+            harf++;} 
+        else if(isdigit(alinandeger[i])) {
+            sayi++;
+        } 
+        else if(alinandeger[i] != ' ') { 
+            ozelkarakter++; }}
+
+    cout << "Harf sayisi = " << harf << endl;
+    cout << "Rakam sayisi = " << sayi << endl;
+    cout << "Ozel karakter sayisi = " << ozelkarakter << endl;}
