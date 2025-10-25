@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+string isim;
+
+int main(){
+cout << "Yapacaginiz islem integer ise 1 i"<< endl;
+cout << "Yapacaginiz islem float ise 2 yi tuslayiniz" << endl;
+getline(cin,isim);
+if(isim == "1"){
+string giris1;
+string giris2;
+cout << "sayi 1 i giriniz"<<endl;
+getline(cin,giris1);
+cout << "sayi 2 yi giriniz"<<endl;
+getline(cin,giris2);
+int sayi1 = stoi(giris1);
+int sayi2 = stoi(giris2);
+string islem;
+cout<<"yacacaginiz islemi seciniz (X,/,-,+): ";
+getline(cin,islem);
+if(islem == "x" || islem == "X"){
+cout<<"Sayilarinizin carpim degeri: " << sayi1*sayi2;
+}else if (islem == "/"){
+cout << "Sayilarinizin bolum degeri: " << sayi1/sayi2 << "bolumden kalan: "<<sayi1%sayi2;
+string yanlismi;
+cout<< "tam tersini mi sormustunuz? (e veya h)";
+getline(cin,yanlismi);
+if(yanlismi == "e" || yanlismi == "E"){
+cout << "O zaman aradiginiz: "<<sayi2/sayi1 << "bolumden kalan: "<<sayi2%sayi1;
+}else if (yanlismi =="h" || yanlismi == "H"){
+cout<<"Tesekkur ederiz ";
+}else{
+cout<<"yanlis tuslama yaptiniz";
+}}else if (islem == "-"){
+cout<<"sayilarinizin farki: "<< (sayi1-sayi2);
+string yanlismi;
+cout<< "tam tersini mi sormustunuz? (e veya h)";
+getline(cin,yanlismi);
+if(yanlismi == "e" || yanlismi == "E"){
+cout << "O zaman aradiginiz: "<< (sayi2-sayi1);
+}else if (yanlismi =="h" || yanlismi == "H"){
+cout<<"Tesekkur ederiz ";
+}}else if (islem == "+"){
+cout<< "aradiginiz toplam" << sayi1+sayi2;
+}else{
+cout<<"Gecersiz islem";}}
+else if(isim == "2"){
+string giris1;
+string giris2;
+cout << "sayi 1 i giriniz"<<endl;
+getline(cin,giris1);
+cout << "sayi 2 yi giriniz"<<endl;
+getline(cin,giris2);
+double sayi1 = stod(giris1);
+double sayi2 = stod(giris2);
+string islem;
+cout<<"yacacaginiz islemi seciniz (X,/,-,+): ";
+getline(cin,islem);
+if(islem == "x" || islem == "X"){
+cout<<"Sayilarinizin carpim degeri: " << sayi1*sayi2;
+}else if (islem == "/"){
+cout << "Sayilarinizin bolum degeri: " << sayi1/sayi2 ;
+string yanlismi;
+cout<< "tam tersini mi sormustunuz? (e veya h)";
+getline(cin,yanlismi);
+if(yanlismi == "e" || yanlismi == "E"){
+cout << "O zaman aradiginiz: "<<sayi2/sayi1;
+}else if (yanlismi =="h" || yanlismi == "H"){
+cout<<"Tesekkur ederiz ";
+}else{
+cout<<"yanlis tuslama yaptiniz";
+}}else if (islem == "-"){
+cout<<"sayilarinizin farki: "<< (sayi1-sayi1);
+string yanlismi;
+cout<< "tam tersini mi sormustunuz? (e veya h)";
+getline(cin,yanlismi);
+if(yanlismi == "e" || yanlismi == "E"){
+cout << "O zaman aradiginiz: "<< (sayi1-sayi2);
+}else if (yanlismi =="h" || yanlismi == "H"){
+cout<<"Tesekkur ederiz ";
+}}else if (islem == "+"){
+cout<< "aradiginiz toplam" << sayi1+sayi2;
+}else{
+cout<<"Gecersiz islem";}}}
