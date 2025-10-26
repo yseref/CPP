@@ -1,0 +1,96 @@
+#include <iostream>
+#include <fstream>
+#include <ctime>
+using namespace std;
+void bakiyesorgu(double bakiye){
+cout<<"Bakiyeniz: "<<bakiye<<" TL"<<endl;
+}
+void parayatirma(double &bakiye){
+double miktar;
+cout<<"Cekmek istediginiz miktari yaziniz: ";
+cin>>miktar;
+bakiye += miktar;
+cout<<"Yeni bakiyeniz: "<<bakiye<<" TL"<<endl;
+}
+
+void paracekme(double &bakiye){
+double miktar;
+cout<<"Cekmek istediginiz tutar: ";
+cin>>miktar;
+if(bakiye>=miktar){
+bakiye -= miktar;
+cout<<"İsleminiz basariyla gerceklesti"<<endl;
+cout<<"Cekilen tutar: "<<miktar<<endl;
+cout<<"Kalan bakiye: "<<bakiye<<endl;
+}else{
+cout<<"Yaptiginiz islem hatali";
+
+}
+
+
+}
+
+int main(){
+    
+bool flag = false; 
+int hata = 0;
+int sifre = 1919;
+int giris = 0;
+double bakiye = 1000;
+while (true){
+cout<<"-----------------------------"<<endl;
+cout<<"Kullanici Adi: Admin"<<endl;
+cout<<"Sifrenizi giriniz: ";
+cin>>giris;
+if(giris == 1919){
+while(true){
+string girilen_islem;
+cout<<"Yapmak istediginiz islemi seciniz"<<endl;
+cout<<"1-) Bakiye sorgulama"<<endl;
+cout<<"2-) Para yatirmak"<<endl;
+cout<<"3-) Para cekmek"<<endl;
+cout<<"4-) Cikis"<<endl;
+cout<<"Islemi giriniz: ";
+cin>>girilen_islem;
+if(girilen_islem == "1"){
+bakiyesorgu(bakiye);
+
+
+}else if (girilen_islem == "2"){
+parayatirma(bakiye);
+
+}else if(girilen_islem == "3"){
+paracekme(bakiye);
+
+}else if(girilen_islem == "4"){
+flag = true;
+cout<<"Basariyla cikis yapildi"<<endl;
+cout<<"------------------------"<<endl;
+break;
+}else{
+cout<<"Lutfen gecerli tuslama yapiniz"<<endl;
+
+}
+
+}
+
+
+}else{
+hata ++;
+cout<<"yanlis tuslama yaptiniz"<<endl;
+cout<<"Kalan hakkiniz: "<<(3-hata)<<endl;
+if(hata >= 3){
+cout<<"hesabiniz bloke oldu"<<endl;
+cout<<"------------------------------"<<endl;
+break;
+
+
+}
+}
+if(flag) break;
+}
+return 0;
+}
+
+
+
