@@ -1,6 +1,4 @@
 #include <iostream>
-#include <fstream>
-#include <ctime>
 using namespace std;
 void bakiyesorgu(double bakiye){
 cout<<"Bakiyeniz: "<<bakiye<<" TL"<<endl;
@@ -91,6 +89,7 @@ if(flag) break;
 }
 return 0;
 }
+
 
 
 
