@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cctype>
+#include <string>
+using namespace std;
+int main(){
+cout<<"(USD,TL,EURO)"<<endl;
+string degisken;
+cout<<"Elinizde bulunan birimi giriniz: ";
+cin>>degisken;
+for(int i=0; i<degisken.length(); i++ ){
+degisken[i] = toupper(degisken[i]);
+}
+string cevirilecekbirim;
+cout<<"Cevrireceginiz birimi seciniz: ";
+cin>>cevirilecekbirim;
+double cevirilecektutar;
+cout<<"Cevireceginiz tutari giriniz: ";
+cin>>cevirilecektutar;
+
+for(int i = 0; i<cevirilecekbirim.length(); i++){
+cevirilecekbirim[i] = toupper(cevirilecekbirim[i]);
+}
+if(degisken == "USD" && cevirilecekbirim =="TL"){
+cevirilecektutar = cevirilecektutar*41.94;
+cout<<"Paraniz basariyla donusturuldu tutar: "<< cevirilecektutar << " " <<cevirilecekbirim;
+}
+else if(degisken == "USD" && cevirilecekbirim == "EURO"){
+cevirilecektutar = cevirilecektutar*0.86;
+cout<<"Paraniz basariyla donusturuldu tutar: "<< cevirilecektutar << " " <<cevirilecekbirim;
+}else if(degisken == "TL" && cevirilecekbirim == "USD" ){
+cevirilecektutar = cevirilecektutar*0.024;
+cout<<"Paraniz basariyla donusturuldu tutar: "<< cevirilecektutar << " " <<cevirilecekbirim;
+}else if(degisken == "TL" && cevirilecekbirim == "EURO"){
+cevirilecektutar = cevirilecektutar*0.020;
+cout<<"Paraniz basariyla donusturuldu tutar: "<< cevirilecektutar << " " <<cevirilecekbirim;
+}else if(degisken == "EURO" && cevirilecekbirim == "TL"){
+cevirilecektutar = cevirilecektutar*48.94;
+cout<<"Paraniz basariyla donusturuldu tutar: "<< cevirilecektutar << " " <<cevirilecekbirim;
+
+}else if(degisken=="EURO" && cevirilecekbirim == "USD"){
+cevirilecektutar = cevirilecektutar*1.17;
+cout<<"Paraniz basariyla donusturuldu tutar: "<< cevirilecektutar << " " <<cevirilecekbirim;
+}else{
+cout<<"Girdiginiz para birimi desteklenmiyor";
+}
+
+}
+
+
+
+
