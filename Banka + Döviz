@@ -1,0 +1,144 @@
+#include <iostream>
+#include <cctype>
+#include <string>
+using namespace std;
+
+double usd = 0;
+double euro = 0;
+double bakiye = 1500;
+
+int main() {
+    string kullaniciadi;
+    cout << "Lutfen kullanici adinizi secerken bosluk birakmayiniz\n";
+    cout << "Kullanici adinizi belirleyiniz: ";
+    cin >> kullaniciadi;
+
+    int sifre;
+    cout << "Sifrenizi belirleyiniz: ";
+    cin >> sifre;
+
+    cout << "---------- Hesabiniz olusturuldu ----------\n";
+
+    string kullanicikontrol;
+    cout << "Kullanici adiniz: ";
+    cin >> kullanicikontrol;
+
+    int sifrekontrol;
+    cout << "Sifrenizi giriniz: ";
+    cin >> sifrekontrol;
+
+    if (kullaniciadi == kullanicikontrol && sifre == sifrekontrol) {
+        cout << "---------- Hesabiniza basariyla giris yapildi ----------\n";
+        cout << "1-) Bakiye goruntuleme\n"
+             << "2-) Para yatirma\n"
+             << "3-) Para cekme\n"
+             << "4-) Tutari dovize cevirme\n"
+             << "5-) Altin alma\n"
+             << "6-) 30 gunluk vadeli hesap\n"
+             << "7-) Cikis\n";
+
+        int islem;
+        cout << "Yapmak istediginiz islemi seciniz: ";
+        cin >> islem;
+
+        double miktar;
+
+        if (islem == 1) {
+            cout << "Bakiyeniz: " << bakiye << " TL\n";
+        }
+
+        else if (islem == 2) {
+            string birim;
+            cout << "Yatirmak istediginiz birimi giriniz (TL/USD/EURO): ";
+            cin >> birim;
+            for (char &c : birim) c = toupper(c);
+
+            cout << "Yatirilacak tutar: ";
+            cin >> miktar;
+
+            if (birim == "USD") usd += miktar;
+            else if (birim == "EURO") euro += miktar;
+            else if (birim == "TL") bakiye += miktar;
+            else { cout << "Hatali birim!\n"; return 0; }
+
+            cout << "----------Toplam hesabiniz----------\n";
+            cout << bakiye << " TL\n" << usd << " USD\n" << euro << " EURO\n";
+        }
+
+        // 3-) Para çekme
+        else if (islem == 3) {
+            string birim;
+            cout << "Cekilecek birimi giriniz (TL/USD/EURO): ";
+            cin >> birim;
+            for (char &c : birim) c = toupper(c);
+
+            cout << "Cekilecek tutar: ";
+            cin >> miktar;
+
+            if (birim == "USD") {
+                if (miktar > usd) cout << "Yetersiz bakiye!\n";
+                else usd -= miktar;
+            }
+            else if (birim == "EURO") {
+                if (miktar > euro) cout << "Yetersiz bakiye!\n";
+                else euro -= miktar;
+            }
+            else if (birim == "TL") {
+                if (miktar > bakiye) cout << "Yetersiz bakiye!\n";
+                else bakiye -= miktar;
+            }
+            else cout << "Hatali birim!\n";
+
+            cout << "----------Toplam hesabiniz----------\n";
+            cout << bakiye << " TL\n" << usd << " USD\n" << euro << " EURO\n";
+        }
+
+        // 4-) Döviz çevirme
+        else if (islem == 4) {
+            string kaynak, hedef;
+            cout << "(USD,TL,EURO)\n";
+            cout << "Elinizde bulunan birimi giriniz: ";
+            cin >> kaynak;
+            for (char &c : kaynak) c = toupper(c);
+            cout << "Cevirilecek birimi giriniz: ";
+            cin >> hedef;
+            for (char &c : hedef) c = toupper(c);
+
+            double tutar;
+            cout << "Cevrilecek tutari giriniz: ";
+            cin >> tutar;
+
+            if (kaynak == "USD" && hedef == "TL") tutar *= 41.94;
+            else if (kaynak == "USD" && hedef == "EURO") tutar *= 0.86;
+            else if (kaynak == "TL" && hedef == "USD") tutar *= 0.024;
+            else if (kaynak == "TL" && hedef == "EURO") tutar *= 0.020;
+            else if (kaynak == "EURO" && hedef == "TL") tutar *= 48.94;
+            else if (kaynak == "EURO" && hedef == "USD") tutar *= 1.17;
+            else { cout << "Hatali donusum!\n"; return 0; }
+
+            cout << "Paraniz basariyla donusturuldu! Yeni tutar: "
+                 << tutar << " " << hedef << endl;
+        }
+
+        else if (islem == 5) {
+            double AltinFiyat = 5361.82;
+            double AltinA;
+            cout << "Altin alacaginiz para miktarini giriniz (TL): ";
+            cin >> AltinA;
+
+            int altinsayisi = AltinA / AltinFiyat;
+            cout << "Aldiginiz altin sayisi: " << altinsayisi << endl;
+        }
+
+        else if (islem == 6) {
+            double faiz = 0.03; 
+            double sonuc = bakiye * (1 + faiz);
+            cout << "30 gunluk vade sonunda paraniz: " << sonuc << " TL olur.\n";
+        }
+
+        else cout << "Yanlis tuslama yaptiniz!\n";
+    }
+    else {
+        cout << "Kullanici adi veya sifre hatali!\n";
+    }
+}
